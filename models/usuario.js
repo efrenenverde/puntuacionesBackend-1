@@ -1,12 +1,12 @@
 let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 
-let PuntuacionSchema = Schema(
+let UsuarioSchema = Schema(
     {
         _id: {type: Schema.ObjectId, auto:true},
         nombre: String,
-        puntuacion: Number
+        email: String,
+        password: String
     }
 )
-
-module.exports = mongoose.model('Score', PuntuacionSchema)
+module.exports = mongoose.model('User', UsuarioSchema)

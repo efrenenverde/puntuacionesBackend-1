@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var routerPuntuacion = require('./routers/puntuacion')
+var routerUsuario = require('./routers/usuario')
 var morgan = require('morgan')
 var cors = require('cors')
 var dotenv = require('dotenv')
@@ -18,6 +19,7 @@ app.use( bodyParser.json() )
 app.use( cors() )
 app.use( morgan('dev') )
 app.use('/puntuacion', routerPuntuacion)
+app.use('/usuario', routerUsuario)
 //TODO: existe un modulo npm install cors
 /*app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
@@ -27,14 +29,11 @@ app.use('/puntuacion', routerPuntuacion)
     next();
 });*/
 
-
-
 // TODO add usuarios (email, password, nombre, ...) -> relaciones 1 a n
 // TODO login (jwt) +  login con goole, login facebook, ...
 // TODO validaciones
 
-
-/*mongoose.connect('mongodb://localhost:27018/scores', {useFindAndModify:true, useNewUrlParser: true, useUnifiedTopology: true} , (err, res)=>{
+/* mongoose.connect('mongodb://localhost:27018/scores', {useFindAndModify:true, useNewUrlParser: true, useUnifiedTopology: true} , (err, res)=>{
     if(err){
         console.log('Error al conectarme a la base de datos')
         throw err
@@ -52,4 +51,4 @@ const run = async() => {
     await app.listen(process.env.PUERTO_SERVIDOR)
     console.log("Servidor y base de datos arrancados")
 }
-run().catch(err => console.err('Fallo al arrancar:'+err))
+run().catch(err => console.error('Fallo al arrancar:'+err))

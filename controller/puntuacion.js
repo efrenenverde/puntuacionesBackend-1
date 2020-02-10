@@ -1,5 +1,6 @@
 var Puntuacion = require('../models/puntuacion')
 
+
 async function getAll(req,res){
     //Callbacks
    /* Puntuacion.find({}).exec( (err, puntuaciones)=>{
